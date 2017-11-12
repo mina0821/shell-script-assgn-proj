@@ -1,0 +1,7 @@
+int main() {
+#ifdef _d1
+  printf("What a beautiful day\n");
+#endif
+#ifdef _d2
+  printf("What an awful day\n");
+#endif

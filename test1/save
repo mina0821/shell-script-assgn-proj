@@ -1,0 +1,97 @@
+#!/bin/bash
+mkdir MYDIR
+echo "*************** directory MYDIR created"
+cd MYDIR
+echo "*************** current directory is MYDIR"
+
+
+for i in {10..19} 
+do
+  echo "************* file myfile$i created is displayed"
+  echo "My name is myfile$i" > myfile$i
+  echo "I have $i$" >> myfile$i
+  if [ $i = 19 ]
+  then
+    echo "*************** Soon, I will be rich." >> myfile$i
+  else
+    echo "Soon, I will have $(($i+1))$" >> myfile$i
+  fi
+done
+
+
+echo "************ list all regular file in MYDIR"
+files=`ls`
+for f in $files
+do
+  echo "$f"
+done
+
+
+echo "************ contents of all regular files in MYDIR"
+for f in $files
+do
+  echo "$f:"
+  echo "$(cat $f)"
+  echo "-----------------------"
+done
+
+
+echo "************** the content of JOINTFILE"
+echo "$(grep -h  0 *)" > JOINTFILE 
+echo "$(grep -h  5 *)" >> JOINTFILE 
+echo "$(cat JOINTFILE)"
+
+
+mkdir MYSUBDIR
+echo "************ subdirectory MYSUBDIR created"
+files=`ls`
+for f in $files
+do
+  if [ "${f:0:6}" = "myfile" ] 
+  then
+    mv $f MYSUBDIR/$f
+  fi
+done
+
+echo "************* list all regular files of MYDIR"
+for f in $(ls)
+do
+  if [ -f $f ] 
+  then
+    echo "$f"
+  fi
+done
+
+cd MYSUBDIR
+echo "************* list all regular files of MYSUBDIR"
+subdir_file=`ls`
+for f in $subdir_file
+do
+  echo "$f"
+done
+
+echo "********** regular files of MYSUBDIR with permissions"
+for f in $subdir_file
+do
+  if [ -f $f ] 
+  then 
+    chmod 754 $f
+    echo "$(ls -l $f)"
+  fi
+done
+
+cd ..
+echo "********* regular files of MYDIR with permissions"
+for f in $(ls)
+do
+  if [ -f $f ] 
+  then
+    chmod 700 $f
+    echo "$(ls -l $f)"
+  fi
+done
+
+
+
+cd ..
+rm -r MYDIR

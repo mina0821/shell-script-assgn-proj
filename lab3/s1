@@ -1,0 +1,10 @@
+if [ $# -ne 3 ] 
+then 
+  echo "number of arguments not correc"
+fi
+
+> $1
+for (( c=1; c<=$3; c+=1 ))
+do
+  echo "$c,$2" >> $1
+done

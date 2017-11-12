@@ -1,0 +1,9 @@
+#include <stdio.h>
+#include <string.h>
+
+void proc1();
+void proc2();
+void proc3();
+#include "proc1.cpp"
+#include "proc2.cpp"
+#include "proc3.cpp"

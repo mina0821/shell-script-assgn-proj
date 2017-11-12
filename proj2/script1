@@ -1,0 +1,4 @@
+make -s -f makefile1 book.txt
+make -s -f makefile1 publish
+./publish book.txt
+make -s -f makefile1 clean

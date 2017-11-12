@@ -1,0 +1,9 @@
+#include <stdio.h>
+
+#ifdef _d3
+  void p1();
+  void p2();
+  void p3();
+  void p4();
+  void p5();
+#endif

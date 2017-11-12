@@ -1,0 +1,4 @@
+make -s sufsort
+echo "testing sufsort 12012120"
+./sufsort 12012120
+make clean

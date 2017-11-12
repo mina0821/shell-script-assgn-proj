@@ -1,0 +1,50 @@
+book1:
+	mkdir book1
+	echo 'This is book Book1' > book1.txt
+	mv book1.txt book1/book1.txt
+
+book2:
+	mkdir book2
+	sed 's/Book1/Book2/' book1/book1.txt > book2.txt
+	mv book2.txt book2/book2.txt
+
+book3: 
+	mkdir book3
+	sed 's/Book1/Book3/' book1/book1.txt > book3.txt
+	mv book3.txt book3/book3.txt
+
+book4:
+	mkdir book4
+	sed 's/Book1/Book4/' book1/book1.txt > book4.txt
+	mv book4.txt book4/book4.txt
+
+book5:
+	mkdir book5
+	sed 's/Book1/Book5/' book1/book1.txt > book5.txt
+	mv book5.txt book5/book5.txt
+
+book6:
+	mkdir book6
+	sed 's/Book1/Book6/' book1/book1.txt > book6.txt
+	mv book6.txt book6/book6.txt
+
+text6:
+	mkdir text6
+	echo 'text6' > text6.txt
+	mv text6.txt text6/text6.txt
+
+book.txt: book1 book2 book3 book4 book5 text6
+	cat book1/book1.txt > book.txt
+	cat book2/book2.txt >> book.txt
+	cat book3/book3.txt >> book.txt
+	cat book4/book4.txt >> book.txt
+	cat book5/book5.txt >> book.txt
+	cat text6/text6.txt >> book.txt
+
+publish: publish.cpp
+	./comp publish
+
+clean: 
+	rm -r book*
+	rm publish
+	rm -r text6

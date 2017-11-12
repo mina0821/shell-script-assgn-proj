@@ -1,0 +1,12 @@
+make -s proc
+echo "************ processes prepared"
+echo "************ status of process 1"
+./proc 1
+echo "************ status of process 2"
+./proc 2
+echo "************ status of process 3"
+./proc 3
+echo "************ status of all processes"
+./proc
+echo "************ cleaning"
+make -s clean
